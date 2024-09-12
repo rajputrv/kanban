@@ -1,7 +1,7 @@
 import { Component, useState } from "react";
 
 class Displaybar extends React.Component() {
-  state = { showSelectionCard };
+  state = { showSelectionCard, groupby, orderby };
   render() {
     return (
       <div>
@@ -21,7 +21,7 @@ class Displaybar extends React.Component() {
           <div style={{ display: showSelectionCard ? "block" : "none" }}>
             <div>
               <label>Grouping </label>
-              <select>
+              <select onSelect={(e) => setState({ groupby: e.target.value })}>
                 <option value={0}>Status</option>
                 <option value={1}>User</option>
                 <option value={2}>Priority</option>
@@ -30,7 +30,7 @@ class Displaybar extends React.Component() {
 
             <div>
               <label>Ordering</label>
-              <select>
+              <select onSelect={(e) => setState({ orderby: e.target.value })}>
                 <option value={0} selected>
                   Priority
                 </option>
@@ -44,4 +44,4 @@ class Displaybar extends React.Component() {
   }
 }
 
-export default Displaybar;
+export default { Displaybar, groupby, orderby };
